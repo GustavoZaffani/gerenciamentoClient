@@ -1,0 +1,51 @@
+<app-toolbar></app-toolbar>
+<br>
+<div class="container">
+  <p-card [style]="{width: auto, height: auto}" styleClass="ui-card-shadow">
+
+    <p-header>
+      <div class="col-12">
+        <span>Cartao List</span>
+        <button type="button"
+                class="btn btn-link"
+                (click)="novoCartao()">
+          <i class="fa fa-2x fa-plus-circle"></i>
+        </button>
+      </div>
+    </p-header>
+
+    <p-table #dt [value]="cartoes" [paginator]="true" [rows]="10" [columns]="cols">
+
+      <ng-template pTemplate="caption">
+        <div>
+          <input type="text"
+                 placeholder="Pesquisar"
+                 pInputText
+                 (input)="dt.filterGlobal($event.target.value, 'contains')"
+                 class="form-control">
+        </div>
+      </ng-template>
+
+      <ng-template pTemplate="header" let-columns>
+        <tr>
+          <th *ngFor="let col of columns">
+            {{col.header}}
+          </th>
+        </tr>
+      </ng-template>
+
+      <ng-template pTemplate="body" let-rowData let-columns="columns">
+        <tr [pSelectableRow]="rowData">
+          <td>{{rowData.id}}</td>
+          <td>{{rowData.descricao}}</td>
+          <td>{{rowData.credenciadora}}</td>
+          <td>{{rowData.bandeira}}</td>
+          <td>{{rowData.vencimento}}</td>
+        </tr>
+      </ng-template>
+
+
+    </p-table>
+
+  </p-card>
+</div>

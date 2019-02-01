@@ -1,0 +1,141 @@
+<app-toolbar></app-toolbar>
+<br>
+<div class="container">
+  <p-card [style]="{width: auto, height: auto}" styleClass="ui-card-shadow">
+
+    <p-header>
+      <div class="col-12">
+        Cartão Form
+      </div>
+    </p-header>
+
+    <form #form="ngForm">
+
+      <div class="row">
+
+        <div class="col-3">
+          <div class="form-group">
+            <label for="id">Código</label>
+            <input name="id"
+                   id="id"
+                   type="number"
+                   class="form-control"
+                   [(ngModel)]="cartao.id"
+                   [disabled]="true">
+          </div>
+        </div>
+
+        <div class="col-9">
+          <div class="form-group">
+            <label for="descricao">Descrição</label>
+            <input name="descricao"
+                   id="descricao"
+                   type="text"
+                   [(ngModel)]="cartao.descricao"
+                   class="form-control">
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+
+        <div class="col-6">
+          <div class="form-group">
+            <label for="credenciadora">Credenciadora</label>
+            <input name="credenciadora"
+                   id="credenciadora"
+                   type="text"
+                   [(ngModel)]="cartao.credenciadora"
+                   class="form-control">
+          </div>
+        </div>
+
+        <div class="col-3">
+          <div class="form-group">
+            <label for="cnpjCred">CNPJ Credenciadora</label>
+            <input name="cnpjCred"
+                   id="cnpjCred"
+                   type="text"
+                   [(ngModel)]="cartao.cnpj"
+                   class="form-control">
+          </div>
+        </div>
+
+        <div class="col-3">
+          <div class="form-group">
+            <label for="limite">Limite</label>
+            <input name="limite"
+                   id="limite"
+                   type="text"
+                   [(ngModel)]="cartao.limite"
+                   class="form-control">
+          </div>
+        </div>
+
+
+      </div>
+
+      <div class="row">
+        <div class="col-4">
+          <div class="form-group">
+            <label for="vencimento">Data Vencimento</label>
+            <p-calendar name="vencimento"
+                        id="vencimento"
+                        dataType="string"
+                        dateFormat="dd/mm/yy"
+                        [(ngModel)]="cartao.vencimento"
+                        [style]="{'width':'100%'}"
+                        [inputStyle]="{'width':'100%'}">
+            </p-calendar>
+          </div>
+        </div>
+
+
+        <div class="col-4">
+          <div class="form-group">
+            <label for="tipo">Tipo</label>
+            <select name="tipo"
+                    id="tipo"
+                    [(ngModel)]="cartao.tipo"
+                    class="form-control">
+              <option value="c">Crédito</option>
+              <option value="d">Débito</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="col-4">
+          <div class="form-group">
+            <label for="bandeira">Bandeira</label>
+            <input name="bandeira"
+                   id="bandeira"
+                   class="form-control"
+                   [(ngModel)]="cartao.bandeira"
+                   type="text">
+          </div>
+        </div>
+
+
+      </div>
+      <p-footer>
+        <button pButton
+                type="button"
+                label="Salvar"
+                icon="pi pi-check"
+                (click)="save()">
+        </button>
+
+        <button pButton
+                type="button"
+                label="Voltar"
+                icon="pi pi-times"
+                class="ui-button-secondary"
+                (click)="back()">
+        </button>
+
+      </p-footer>
+
+    </form>
+  </p-card>
+</div>
+
