@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 
 @Component({
   selector: 'app-sidenav',
@@ -9,7 +9,8 @@ export class SidenavComponent implements OnInit {
 
   display = true;
 
-  constructor() { }
+  constructor() {
+  }
 
   ngOnInit() {
   }

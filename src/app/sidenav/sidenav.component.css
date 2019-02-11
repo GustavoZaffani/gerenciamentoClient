@@ -15,13 +15,16 @@
   opacity: 0.9;
   text-align: right;
 }
-.white-text i{
+
+.white-text i {
   opacity: 0.8;
   margin-left: 10px;
 }
-.mouseOver:hover{
+
+.mouseOver:hover {
   background-color: #dededee0;
 }
+
 .menu-principal {
   font-size: 1.5rem;
   font-family: FontAwesome;
@@ -30,16 +33,20 @@
   padding: 15px;
   margin-top: 0;
 }
+
 .menu-selecionado {
   color: blue;
 }
+
 .botao-menu {
   background-color: #2e405e;
   border: solid #2e405e;
 }
+
 .sidenav {
   background-color: #fbfbfb !important;
 }
+
 .ui-grid-col-12 {
   border-bottom: rgba(214, 219, 204, 0.6) 1px solid;
 }

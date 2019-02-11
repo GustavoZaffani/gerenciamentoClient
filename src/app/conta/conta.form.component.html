@@ -1,0 +1,123 @@
+<app-toolbar></app-toolbar>
+<br>
+<div class="container">
+  <p-card [style]="{width: auto, height: auto}" styleClass="ui-card-shadow">
+    <p-header>
+      <div class="col-12">
+        Contas Form
+      </div>
+    </p-header>
+
+    <form #form="ngForm">
+
+      <div class="row">
+        <div class="col-3">
+          <div class="form-group">
+            <label for="codigo">Código</label>
+            <input name="codigo"
+                   id="codigo"
+                   type="text"
+                   [disabled]="true"
+                   [(ngModel)]="conta.id"
+                   class="form-control">
+          </div>
+        </div>
+
+        <div class="col-9">
+          <div class="form-group">
+            <label for="descricao">Descrição</label>
+            <input name="descricao"
+                   id="descricao"
+                   type="text"
+                   [(ngModel)]="conta.descricao"
+                   class="form-control">
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+
+        <div class="col-6">
+          <div class="form-group">
+            <label for="cartao">Cartão</label>
+            <p-autoComplete inputId="cartao"
+                            name="cartao"
+                            [dropdown]="true"
+                            appendTo="body"
+                            field="descricao"
+                            (onSelect)="cartaoSelected()"
+                            [(ngModel)]="conta.cartao"
+                            (completeMethod)="findCartoes($event)"
+                            [suggestions]="cartoesList"
+                            (onClear)="conta.cartao = null"
+                            [forceSelection]="true">
+            </p-autoComplete>
+          </div>
+        </div>
+
+        <div class="col-3">
+          <div class="form-group">
+            <label for="vencimento">Vencimento</label>
+            <p-calendar name="vencimento"
+                        id="vencimento"
+                        datatype="string"
+                        dateFormat="dd/mm/yy"
+                        [disabled]="vencimentoDisabled"
+                        [(ngModel)]="conta.vencimento"
+                        [style]="{'width':'100%'}"
+                        [inputStyle]="{'width':'100%'}">
+            </p-calendar>
+          </div>
+        </div>
+
+        <div class="col-3">
+          <div class="form-group">
+            <label for="parcelas">Qtde Parcelas</label>
+            <input name="parcelas"
+                   id="parcelas"
+                   type="text"
+                   [(ngModel)]="conta.parcelas"
+                   class="form-control">
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+
+        <div class="col-3">
+          <div class="form-group">
+            <label for="valor">Valor</label>
+            <input name="valor"
+                   id="valor"
+                   type="number"
+                   [(ngModel)]="conta.valor"
+                   class="form-control">
+          </div>
+        </div>
+
+      </div>
+
+
+    </form>
+
+    <p-footer>
+
+      <button type="button"
+              pButton
+              label="Salvar"
+              icon="pi pi-check"
+              (click)="save()">
+      </button>
+
+      <button type="button"
+              pButton
+              label="Voltar"
+              icon="pi pi-times"
+              class="ui-button-secondary"
+              (click)="back()">
+      </button>
+
+    </p-footer>
+
+  </p-card>
+</div>

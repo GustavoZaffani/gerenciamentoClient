@@ -21,4 +21,5 @@ import {SidenavModule} from '../sidenav/sidenav.module';
   ]
 })
 
-export class ToolbarrModule {}
+export class ToolbarrModule {
+}

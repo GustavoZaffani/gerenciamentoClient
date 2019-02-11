@@ -28,6 +28,7 @@
         <div class="col-9">
           <div class="form-group">
             <label for="descricao">Descrição</label>
+            <span class="campo-obrigatorio">*</span>
             <input name="descricao"
                    id="descricao"
                    type="text"
@@ -79,6 +80,7 @@
         <div class="col-4">
           <div class="form-group">
             <label for="vencimento">Data Vencimento</label>
+            <span class="campo-obrigatorio">*</span>
             <p-calendar name="vencimento"
                         id="vencimento"
                         dataType="string"
@@ -94,6 +96,7 @@
         <div class="col-4">
           <div class="form-group">
             <label for="tipo">Tipo</label>
+            <span class="campo-obrigatorio">*</span>
             <select name="tipo"
                     id="tipo"
                     [(ngModel)]="cartao.tipo"

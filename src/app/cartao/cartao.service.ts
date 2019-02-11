@@ -29,4 +29,9 @@ export class CartaoService {
   delete(id: number): Observable<void> {
     return this.http.delete<void>(this.url + `/${id}`);
   }
+
+  complete(query: string): Observable<Cartao[]> {
+    const url = this.url + `/complete?query=${query}`;
+    return this.http.get<Cartao[]>(url);
+  }
 }

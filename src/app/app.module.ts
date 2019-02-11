@@ -10,11 +10,12 @@ import {HomeModule} from './home/home.module';
 import {CalendarioModule} from './calendario/calendario.module';
 import {ConfiguracaoModule} from './configuracao/configuracao.module';
 import {CartaoModule} from './cartao/cartao.module';
+import {ContaModule} from './conta/conta.module';
 
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
   ],
   imports: [
     BrowserModule,
@@ -25,7 +26,8 @@ import {CartaoModule} from './cartao/cartao.module';
     SidenavModule,
     CalendarioModule,
     ConfiguracaoModule,
-    CartaoModule
+    CartaoModule,
+    ContaModule
   ],
   providers: [],
   bootstrap: [AppComponent]

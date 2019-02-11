@@ -21,4 +21,5 @@ import {SidenavComponent} from './sidenav.component';
   providers: []
 })
 
-export class SidenavModule {}
+export class SidenavModule {
+}

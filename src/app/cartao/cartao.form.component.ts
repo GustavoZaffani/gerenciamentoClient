@@ -14,15 +14,13 @@ export class CartaoFormComponent implements OnInit {
   cartoes: Cartao[];
 
   @ViewChild('form') form: NgForm;
-  constructor(private cartaoService: CartaoService) { }
+
+  constructor(private cartaoService: CartaoService) {
+  }
 
   ngOnInit() {
     this.cartao = new Cartao();
-    this.cartaoService.findAll()
-      .subscribe(e => {
-        this.cartoes = e;
-        console.log(this.cartoes);
-      });
+
 
   }
 
