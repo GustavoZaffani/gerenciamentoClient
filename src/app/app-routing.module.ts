@@ -14,8 +14,10 @@ const routes: Routes = [
   {path: 'configuracoes', component: ConfiguracaoComponent},
   {path: 'cartoes', component: CartaoListComponent},
   {path: 'cartoes/form', component: CartaoFormComponent},
+  {path: 'cartoes/form/:id', component: CartaoFormComponent},
   {path: 'contas', component: ContaListComponent},
-  {path: 'contas/form', component: ContaFormComponent}
+  {path: 'contas/form', component: ContaFormComponent},
+  {path: 'contas/form/:id', component: ContaFormComponent}
 ];
 
 @NgModule({

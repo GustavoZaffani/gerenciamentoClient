@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import {ContaService} from '../conta/conta.service';
+import {Conta} from '../conta/conta';
+import {CalendarioService} from './calendario.service';
 
 @Component({
   selector: 'app-calendario',
@@ -8,35 +11,32 @@ import { Component, OnInit } from '@angular/core';
 export class CalendarioComponent implements OnInit {
 
   events: any[];
+  options: any;
 
-  constructor() { }
+  conta: Conta[];
+
+  constructor(private contaService: ContaService,
+              private calendarioService: CalendarioService) { }
 
   ngOnInit() {
 
-    this.events = [
-      {
-        "title": "All Day Event",
-        "start": "2016-01-01"
+    this.contaService.findAll()
+      .subscribe(e => {
+        this.conta = e;
+      });
+
+    // this.calendarioService.getEvents().then(events => {this.events = events;});
+
+    this.options = {
+      defaultDate: '2019-02-01',
+      header: {
+        left: 'prev,next',
+        center: 'title',
+        right: 'month,agendaWeek,agendaDay'
       },
-      {
-        "title": "Long Event",
-        "start": "2016-01-07",
-        "end": "2016-01-10"
-      },
-      {
-        "title": "Repeating Event",
-        "start": "2016-01-09T16:00:00"
-      },
-      {
-        "title": "Repeating Event",
-        "start": "2016-01-16T16:00:00"
-      },
-      {
-        "title": "Conference",
-        "start": "2016-01-11",
-        "end": "2016-01-13"
-      }
-    ];
+      editable: true
+    };
+
   }
 
 }

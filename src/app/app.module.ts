@@ -11,11 +11,13 @@ import {CalendarioModule} from './calendario/calendario.module';
 import {ConfiguracaoModule} from './configuracao/configuracao.module';
 import {CartaoModule} from './cartao/cartao.module';
 import {ContaModule} from './conta/conta.module';
+import {GrowlModule} from 'primeng/growl';
+import {MessageService} from 'primeng/api';
 
 
 @NgModule({
   declarations: [
-    AppComponent,
+    AppComponent
   ],
   imports: [
     BrowserModule,
@@ -27,9 +29,12 @@ import {ContaModule} from './conta/conta.module';
     CalendarioModule,
     ConfiguracaoModule,
     CartaoModule,
-    ContaModule
+    ContaModule,
+    GrowlModule
   ],
-  providers: [],
+  providers: [
+    MessageService
+  ],
   bootstrap: [AppComponent]
 })
 

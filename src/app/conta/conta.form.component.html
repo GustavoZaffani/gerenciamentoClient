@@ -22,7 +22,6 @@
                    class="form-control">
           </div>
         </div>
-
         <div class="col-9">
           <div class="form-group">
             <label for="descricao">Descrição</label>
@@ -36,26 +35,35 @@
       </div>
 
       <div class="row">
-
-        <div class="col-6">
+        <div class="col-4">
           <div class="form-group">
-            <label for="cartao">Cartão</label>
-            <p-autoComplete inputId="cartao"
-                            name="cartao"
-                            [dropdown]="true"
-                            appendTo="body"
-                            field="descricao"
-                            (onSelect)="cartaoSelected()"
-                            [(ngModel)]="conta.cartao"
-                            (completeMethod)="findCartoes($event)"
-                            [suggestions]="cartoesList"
-                            (onClear)="conta.cartao = null"
-                            [forceSelection]="true">
-            </p-autoComplete>
+            <label for="tipoPagamento">Tipo de Pagamento</label>
+            <select name="tipoPagamento"
+                    id="tipoPagamento"
+                    (change)="tipoSelected()"
+                    [(ngModel)]="conta.tipoPagamento"
+                    class="form-control">
+              <option value="D">Dinheiro</option>
+              <option value="C">Cartão</option>
+              <option value="B">Boleto</option>
+            </select>
           </div>
         </div>
-
-        <div class="col-3">
+        <div class="col-4">
+          <div class="form-group">
+            <label for="dataConta">Data da Conta</label>
+            <p-calendar name="dataConta"
+                        id="dataConta"
+                        datatype="string"
+                        dateFormat="dd/mm/yy"
+                        (onSelect)="setVencimento()"
+                        [(ngModel)]="conta.dtConta"
+                        [style]="{'width':'100%'}"
+                        [inputStyle]="{'width':'100%'}">
+            </p-calendar>
+          </div>
+        </div>
+        <div class="col-4">
           <div class="form-group">
             <label for="vencimento">Vencimento</label>
             <p-calendar name="vencimento"
@@ -69,34 +77,65 @@
             </p-calendar>
           </div>
         </div>
+      </div>
 
-        <div class="col-3">
+
+      <div class="row">
+        <div class="col-4">
+          <div class="form-group">
+            <label for="cartao">Cartão</label>
+            <p-autoComplete inputId="cartao"
+                            name="cartao"
+                            [dropdown]="true"
+                            appendTo="body"
+                            field="descricao"
+                            (onSelect)="cartaoSelected()"
+                            [(ngModel)]="conta.cartao"
+                            (completeMethod)="findCartoes($event)"
+                            [suggestions]="cartoesList"
+                            (onClear)="conta.cartao = null"
+                            [disabled]="cartaoDisabled"
+                            [forceSelection]="true">
+            </p-autoComplete>
+          </div>
+        </div>
+        <div class="col-4">
           <div class="form-group">
             <label for="parcelas">Qtde Parcelas</label>
             <input name="parcelas"
                    id="parcelas"
                    type="text"
+                   maxlength="3"
+                   [disabled]="parcelasDisabled"
                    [(ngModel)]="conta.parcelas"
+                   class="form-control">
+          </div>
+        </div>
+        <div class="col-4">
+          <div class="form-group">
+            <label for="valor">Valor</label>
+            <input name="valor"
+                   id="valor"
+                   type="number"
+                   (blur)="validaValor()"
+                   [(ngModel)]="conta.valor"
                    class="form-control">
           </div>
         </div>
       </div>
 
       <div class="row">
-
-        <div class="col-3">
+        <div class="col-12">
           <div class="form-group">
-            <label for="valor">Valor</label>
-            <input name="valor"
-                   id="valor"
-                   type="number"
-                   [(ngModel)]="conta.valor"
+            <label for="observacao">Observações</label>
+            <input name="observacao"
+                   id="observacao"
+                   type="text"
+                   [(ngModel)]="conta.observacao"
                    class="form-control">
           </div>
         </div>
-
       </div>
-
 
     </form>
 

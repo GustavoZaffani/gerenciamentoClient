@@ -3,3 +3,125 @@
 .campo-obrigatorio {
   padding-left: 5px;
 }
+
+body {
+  background-color: rgba(96, 96, 96, 0.17) !important;
+}
+
+.menu-card {
+  border-bottom: #cac5c5 1px solid;
+  font-size: 1.7rem;
+  padding: 13px;
+  width: 100%;
+  position: relative;
+  padding-left: 40px !important;
+  font-family: Arial, Helvetica, sans-serif, serif;
+  color: #787c80;
+}
+
+.btn-card {
+  padding-left: 24px !important;
+  font-family: Arial, Helvetica, sans-serif, serif;
+  color: #787c80 !important;
+  float: right;
+}
+
+.ajuste-complete{
+  padding: 0.510em;
+}
+
+.borda-inferior {
+  border-bottom: 1px solid #d5d5d5;
+  padding-top: 10px;
+}
+
+.borda-superior {
+  border-top: 1px solid #d5d5d5;
+  padding-top: 10px
+}
+
+.teste {
+  padding-bottom: 1000px;
+}
+
+p-table th {
+  text-align: center;
+  color: #606067;
+  color: white !important;
+  background-color: #4c689aab !important;
+}
+
+p-table td {
+  text-align: center;
+  border: none !important;
+  border-bottom: black solid 1px;
+}
+
+form {
+  padding-top: 8px;
+  padding-left: 22px;
+  padding-right: 22px;
+}
+
+.botao-tabela {
+  border: unset;
+  background-color: unset;
+  margin-right: 8px;
+}
+
+.botao-tabela:hover {
+  background-color: #dededee0;
+}
+
+.sem-borda {
+  border: none !important;
+}
+
+body .ui-autocomplete .ui-autocomplete-dropdown {
+  height: 35px !important;
+  width: 30px !important;
+}
+
+body .ui-autocomplete .ui-autocomplete-input  {
+  width: calc(100% - 30px) !important;
+}
+
+body .ui-autocomplete{
+  width: 100% !important;
+}
+
+body .ui-dialog-content{
+  overflow-x: hidden !important;
+}
+
+body .ui-dialog-titlebar {
+  padding: 22px !important;
+}
+
+body .ui-dialog-title {
+  font-size: 20px;
+}
+
+.btn-link-table {
+  text-decoration: none;
+  background-color: inherit;
+}
+
+.btn-link-table:hover{
+  background-color: #dededee0 !important;
+}
+
+.ui-table-caption {
+  border: none !important;
+  background-color: unset !important;
+}
+
+body .ui-autocomplete-panel {
+  margin-left: 30px;
+}
+
+.ui-dialog-content {
+  padding-top: 35px !important;
+  padding-bottom: 35px !important;
+}
+

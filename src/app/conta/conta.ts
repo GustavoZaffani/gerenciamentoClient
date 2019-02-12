@@ -8,4 +8,7 @@ export class Conta {
   parcelas: string;
   cartao: Cartao;
   valor: number;
+  tipoPagamento: string;
+  observacao: string;
+  dtConta: string;
 }

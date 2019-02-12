@@ -2,6 +2,7 @@ import {Component, OnInit, ViewChild} from '@angular/core';
 import {Cartao} from './cartao';
 import {NgForm} from '@angular/forms';
 import {CartaoService} from './cartao.service';
+import {ActivatedRoute} from '@angular/router';
 
 @Component({
   selector: 'app-cartao',
@@ -15,13 +16,22 @@ export class CartaoFormComponent implements OnInit {
 
   @ViewChild('form') form: NgForm;
 
-  constructor(private cartaoService: CartaoService) {
+  constructor(private cartaoService: CartaoService,
+              private route: ActivatedRoute) {
   }
 
   ngOnInit() {
     this.cartao = new Cartao();
 
-
+    this.route.params
+      .subscribe(params => {
+        if (params['id']) {
+          this.cartaoService.findOne(params['id'])
+            .subscribe(e => {
+              this.cartao = e;
+            });
+        }
+      });
   }
 
   save() {

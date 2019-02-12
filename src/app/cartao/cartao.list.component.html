@@ -31,6 +31,7 @@
           <th *ngFor="let col of columns">
             {{col.header}}
           </th>
+          <th style="width: 110px">Opções</th>
         </tr>
       </ng-template>
 
@@ -41,6 +42,23 @@
           <td>{{rowData.credenciadora}}</td>
           <td>{{rowData.bandeira}}</td>
           <td>{{rowData.vencimento}}</td>
+          <td>
+            <button pTooltip="Editar"
+                    type="button"
+                    class="btn btn-link-table"
+                    tooltipPosition="top"
+                    (click)="editar(rowData.id)">
+              <i class="fa fa-edit"></i>
+            </button>
+
+            <button pTooltip="Excluir"
+                    type="button"
+                    class="btn btn-link-table"
+                    (click)="excluir(rowData.id)"
+                    tooltipPosition="top">
+              <i class="fa fa-trash"></i>
+            </button>
+          </td>
         </tr>
       </ng-template>
 

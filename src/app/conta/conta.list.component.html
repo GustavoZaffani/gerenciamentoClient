@@ -28,17 +28,41 @@
 
       <ng-template pTemplate="header" let-columns>
         <tr>
+          <th style="width: 50px">#</th>
           <th *ngFor="let col of columns">
             {{col.header}}
           </th>
+          <th style="width: 110px">Opções</th>
         </tr>
       </ng-template>
 
       <ng-template pTemplate="body" let-rowData let-columns="columns">
         <tr [pSelectableRow]="rowData">
+          <td *ngIf="rowData.tipoPagamento == 'D'"><i class="col-1 fa fa-money-bill-alt"></i></td>
+          <!--Verificar icone para colocar no boleto-->
+          <td *ngIf="rowData.tipoPagamento == 'B'"><i class="col-1 fa fa-cogs"></i></td>
+          <td *ngIf="rowData.tipoPagamento == 'C'"><i class="col-1 fa fa-credit-card"></i></td>
           <td>{{rowData.id}}</td>
           <td>{{rowData.descricao}}</td>
+          <td>{{rowData.dtConta}}</td>
           <td>{{rowData.vencimento}}</td>
+          <td>
+            <button pTooltip="Editar"
+                    type="button"
+                    class="btn btn-link-table"
+                    tooltipPosition="top"
+                    (click)="editar(rowData.id)">
+              <i class="fa fa-edit"></i>
+            </button>
+
+            <button pTooltip="Excluir"
+                    type="button"
+                    class="btn btn-link-table"
+                    (click)="excluir(rowData.id)"
+                    tooltipPosition="top">
+              <i class="fa fa-trash"></i>
+            </button>
+          </td>
         </tr>
       </ng-template>
 
