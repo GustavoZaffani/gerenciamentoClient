@@ -37,7 +37,7 @@
       </ng-template>
 
       <ng-template pTemplate="body" let-rowData let-columns="columns">
-        <tr [pSelectableRow]="rowData">
+        <tr class="conta-atrasada" [pSelectableRow]="rowData">
           <td *ngIf="rowData.tipoPagamento == 'D'"><i class="col-1 fa fa-money-bill-alt"></i></td>
           <!--Verificar icone para colocar no boleto-->
           <td *ngIf="rowData.tipoPagamento == 'B'"><i class="col-1 fa fa-cogs"></i></td>

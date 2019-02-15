@@ -5,7 +5,8 @@ export class Cartao {
   credenciadora: string;
   cnpj: number;
   limite: number;
-  vencimento: string;
+  vencimento: number;
   tipo: string;
   bandeira: string;
+  melhorData: number;
 }

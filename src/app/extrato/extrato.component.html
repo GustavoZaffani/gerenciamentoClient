@@ -1,0 +1,56 @@
+<app-toolbar></app-toolbar>
+<br>
+<div class="container">
+  <p-card [style]="{width: auto, height: auto}" styleClass="ui-card-shadow">
+
+    <h2>Olá, Zaffani!</h2>
+    <!--TODO melhora essa frase-->
+    <p>Por favor, preencha o filtro abaixo com as informações que deseja visualizar.</p>
+
+    <form #form="ngForm">
+
+      <div class="row">
+
+        <div class="col-4">
+          <div class="form-group">
+            <label for="mes">Mês</label>
+            <p-calendar name="mes"
+                        id="mes"
+                        view="month"
+                        dataType="string"
+                        dateFormat="mm/yy"
+                        [style]="{'width':'100%'}"
+                        [inputStyle]="{'width':'100%'}"></p-calendar>
+          </div>
+        </div>
+
+        <div class="col-8">
+          <div class="form-group">
+            <label for="cartao">Cartão</label>
+            <p-autoComplete inputId="cartao"
+                            name="cartao"
+                            [dropdown]="true"
+                            appendTo="body"
+                            field="descricao"
+                            (completeMethod)="findCartoes($event)"
+                            [suggestions]="cartaoList"
+                            (onClear)="extrato.cartao = null"
+                            [forceSelection]="true">
+            </p-autoComplete>
+          </div>
+        </div>
+      </div>
+
+    </form>
+
+    <p-footer>
+      <button type="button"
+              pButton
+              label="Filtrar"
+              icon="pi pi-check"
+              (click)="filtrar()">
+      </button>
+    </p-footer>
+
+  </p-card>
+</div>

@@ -13,6 +13,7 @@ import {CartaoModule} from './cartao/cartao.module';
 import {ContaModule} from './conta/conta.module';
 import {GrowlModule} from 'primeng/growl';
 import {MessageService} from 'primeng/api';
+import {ExtratoModule} from './extrato/extrato.module';
 
 
 @NgModule({
@@ -30,7 +31,8 @@ import {MessageService} from 'primeng/api';
     ConfiguracaoModule,
     CartaoModule,
     ContaModule,
-    GrowlModule
+    GrowlModule,
+    ExtratoModule
   ],
   providers: [
     MessageService

@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {ActivatedRoute, Router} from '@angular/router';
+import {Router} from '@angular/router';
 import {Cartao} from './cartao';
 import {CartaoService} from './cartao.service';
 import {MessageService} from 'primeng/api';

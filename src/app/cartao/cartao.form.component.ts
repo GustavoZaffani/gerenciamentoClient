@@ -13,6 +13,10 @@ export class CartaoFormComponent implements OnInit {
 
   cartao: Cartao;
   cartoes: Cartao[];
+  enabledObrigaMelhorData = false;
+  enabledObrigaVencimento = false;
+  disabledMelhorData = true;
+  disabledVencimento = true;
 
   @ViewChild('form') form: NgForm;
 
@@ -29,6 +33,7 @@ export class CartaoFormComponent implements OnInit {
           this.cartaoService.findOne(params['id'])
             .subscribe(e => {
               this.cartao = e;
+              this.validaTipoCartao();
             });
         }
       });
@@ -45,5 +50,22 @@ export class CartaoFormComponent implements OnInit {
 
   back() {
     window.history.back();
+  }
+
+  validaTipoCartao() {
+    if (this.cartao.tipo === 'C') {
+      this.disabledMelhorData = false;
+      this.disabledVencimento = false;
+      this.enabledObrigaMelhorData = true;
+      this.enabledObrigaVencimento = true;
+    } else {
+      this.cartao.vencimento = null;
+      this.cartao.melhorData = null;
+      this.disabledMelhorData = true;
+      this.disabledVencimento = true;
+      this.enabledObrigaMelhorData = false;
+      this.enabledObrigaVencimento = false;
+    }
+
   }
 }

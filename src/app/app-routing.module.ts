@@ -7,6 +7,7 @@ import {CartaoFormComponent} from './cartao/cartao.form.component';
 import {CartaoListComponent} from './cartao/cartao.list.component';
 import {ContaListComponent} from './conta/conta.list.component';
 import {ContaFormComponent} from './conta/conta.form.component';
+import {ExtratoComponent} from './extrato/extrato.component';
 
 const routes: Routes = [
   {path: '', component: HomeComponent},
@@ -17,7 +18,8 @@ const routes: Routes = [
   {path: 'cartoes/form/:id', component: CartaoFormComponent},
   {path: 'contas', component: ContaListComponent},
   {path: 'contas/form', component: ContaFormComponent},
-  {path: 'contas/form/:id', component: ContaFormComponent}
+  {path: 'contas/form/:id', component: ContaFormComponent},
+  {path: 'extrato', component: ExtratoComponent}
 ];
 
 @NgModule({

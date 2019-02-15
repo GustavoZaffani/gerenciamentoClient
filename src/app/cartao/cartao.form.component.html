@@ -64,6 +64,50 @@
 
         <div class="col-3">
           <div class="form-group">
+            <label for="tipo">Tipo</label>
+            <span class="campo-obrigatorio">*</span>
+            <select name="tipo"
+                    id="tipo"
+                    (change)="validaTipoCartao()"
+                    [(ngModel)]="cartao.tipo"
+                    class="form-control">
+              <option value="C">Crédito</option>
+              <option value="D">Débito</option>
+            </select>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="row">
+        <div class="col-3">
+          <div class="form-group">
+            <label for="vencimento">Dia Vencimento</label>
+            <span *ngIf="enabledObrigaVencimento" class="campo-obrigatorio">*</span>
+            <input name="vencimento"
+                   id="vencimento"
+                   type="number"
+                   [disabled]="disabledVencimento"
+                   [(ngModel)]="cartao.vencimento"
+                   class="form-control">
+          </div>
+        </div>
+
+        <div class="col-3">
+          <div class="form-group">
+            <label for="melhorDia">Melhor dia p/ Compra</label>
+            <span *ngIf="enabledObrigaMelhorData" class="campo-obrigatorio">*</span>
+            <input name="melhorDia"
+                   id="melhorDia"
+                   type="number"
+                   [disabled]="disabledMelhorData"
+                   [(ngModel)]="cartao.melhorData"
+                   class="form-control">
+          </div>
+        </div>
+
+        <div class="col-3">
+          <div class="form-group">
             <label for="limite">Limite</label>
             <input name="limite"
                    id="limite"
@@ -73,42 +117,7 @@
           </div>
         </div>
 
-
-      </div>
-
-      <div class="row">
-        <div class="col-4">
-          <div class="form-group">
-            <label for="vencimento">Data Vencimento</label>
-            <span class="campo-obrigatorio">*</span>
-            <p-calendar name="vencimento"
-                        id="vencimento"
-                        dataType="string"
-                        dateFormat="dd/mm/yy"
-                        [(ngModel)]="cartao.vencimento"
-                        [style]="{'width':'100%'}"
-                        [inputStyle]="{'width':'100%'}">
-            </p-calendar>
-          </div>
-        </div>
-
-
-        <div class="col-4">
-          <div class="form-group">
-            <label for="tipo">Tipo</label>
-            <span class="campo-obrigatorio">*</span>
-            <select name="tipo"
-                    id="tipo"
-
-                    [(ngModel)]="cartao.tipo"
-                    class="form-control">
-              <option value="C">Crédito</option>
-              <option value="D">Débito</option>
-            </select>
-          </div>
-        </div>
-
-        <div class="col-4">
+        <div class="col-3">
           <div class="form-group">
             <label for="bandeira">Bandeira</label>
             <input name="bandeira"
@@ -118,7 +127,6 @@
                    type="text">
           </div>
         </div>
-
 
       </div>
       <p-footer>

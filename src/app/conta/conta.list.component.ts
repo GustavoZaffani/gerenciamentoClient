@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnInit, ViewChild} from '@angular/core';
 import {Router} from '@angular/router';
 import {Conta} from './conta';
 import {ContaService} from './conta.service';
@@ -13,6 +13,9 @@ export class ContaListComponent implements OnInit {
 
   cols: any[];
   contas: Conta[];
+  contaVencida = true;
+  contaDia = false;
+  contaPaga = false;
 
   constructor(private router: Router,
               private contaService: ContaService,
@@ -52,5 +55,4 @@ export class ContaListComponent implements OnInit {
         this.atualizaTabela();
     });
   }
-
 }

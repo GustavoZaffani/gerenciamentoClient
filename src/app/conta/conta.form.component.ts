@@ -6,6 +6,7 @@ import {NgForm} from '@angular/forms';
 import {ContaService} from './conta.service';
 import {MessageService} from 'primeng/api';
 import {ActivatedRoute} from '@angular/router';
+import * as moment from 'moment';
 
 @Component({
   selector: 'app-conta-form',
@@ -14,6 +15,7 @@ import {ActivatedRoute} from '@angular/router';
 })
 export class ContaFormComponent implements OnInit {
 
+  vencimento: string;
   conta: Conta;
   cartoesList: Cartao[];
   vencimentoDisabled = false;
@@ -29,7 +31,8 @@ export class ContaFormComponent implements OnInit {
 
   ngOnInit() {
     this.conta = new Conta();
-
+    // TODO necessário verificar a data
+    this.conta.dtConta = moment(new Date()).format('DD/MM/YYYY');
     this.route.params.subscribe(params => {
       if (params['id']) {
         this.contaService.findOne(params['id'])
@@ -56,11 +59,19 @@ export class ContaFormComponent implements OnInit {
     }
   }
 
+  vencimentoEqualsConta() {
+    if (this.conta.dtConta) {
+      this.conta.vencimento = this.conta.dtConta;
+    }
+  }
+
   tipoSelected() {
     if (this.conta.tipoPagamento === 'C') {
       this.cartaoDisabled = false;
       this.parcelasDisabled = false;
     } else {
+      this.vencimentoEqualsConta();
+      this.conta.cartao = null;
       this.cartaoDisabled = true;
       this.parcelasDisabled = true;
       this.vencimentoDisabled = false;
@@ -76,13 +87,26 @@ export class ContaFormComponent implements OnInit {
     }
   }
 
+  // TODO necessário implementar uma funcao que subtraia a data corretamente
   cartaoSelected() {
-    this.conta.vencimento = this.conta.cartao.vencimento;
-    this.vencimentoDisabled = true;
+
+    if (this.conta.cartao.tipo === 'C') {
+      const vencimento = new Date();
+      vencimento.setDate(this.conta.cartao.vencimento);
+
+      if (new Date().getDate() >= this.conta.cartao.melhorData) {
+        vencimento.setMonth(vencimento.getMonth() + 1);
+      }
+      this.conta.vencimento = moment(vencimento).format('DD/MM/YYYY');
+      this.vencimentoDisabled = true;
+    } else {
+      this.vencimentoEqualsConta();
+    }
   }
 
   save() {
     console.log(this.conta);
+    this.formataData();
     this.contaService.save(this.conta)
       .subscribe(e => {
         this.conta = e;
@@ -96,4 +120,14 @@ export class ContaFormComponent implements OnInit {
   back() {
     window.history.back();
   }
+
+  // TODO será utilizada até descobrir o motivo de estar dando erro na data
+  formataData() {
+    this.conta.vencimento = moment(this.conta.vencimento).format('DD/MM/YYYY');
+    this.conta.dtConta = moment(this.conta.vencimento).format('DD/MM/YYYY');
+    console.log('data conta', this.conta.dtConta);
+    console.log('data vencimento', this.conta.vencimento);
+  }
+
+
 }

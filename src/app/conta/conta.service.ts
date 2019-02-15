@@ -3,6 +3,7 @@ import {HttpClient} from '@angular/common/http';
 import {environment} from '../../environments/environment';
 import {Observable} from 'rxjs';
 import {Conta} from './conta';
+import {Cartao} from '../cartao/cartao';
 
 @Injectable()
 export class ContaService {
@@ -28,4 +29,10 @@ export class ContaService {
   delete(id: number): Observable<void> {
     return this.http.delete<void>(this.url + `/${id}`);
   }
+
+  findContasByFiltro(cartao: Cartao, data: string): Observable<Conta[]> {
+    return this.http.get<Conta[]>(this.url + '/' + cartao + '/' + data);
+  }
+
+  // TODO necessário arrumar um jeito de trazer as contas de acordo com a data e cartão
 }
