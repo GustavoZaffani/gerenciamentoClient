@@ -1,0 +1,158 @@
+<app-toolbar></app-toolbar>
+<mat-toolbar color="primary" style="margin-top: 60px;">
+
+  <button class="btn-icon" routerLink="/" (click)="openHome()" title="Home">
+    <i class="fa fa-2x fa-home white-text"></i>
+  </button>
+  <span>Central de Liberações</span>
+  <span class="spacer"></span>
+
+  <button class="btn-icon" routerLink="/" (click)="showDialog()" title="Filtros">
+    <i class="fa fa-2x fa-filter white-text"></i>
+  </button>
+
+  <mat-icon (click)="loadLiberacoes()" class="btn-toolbar" title="Atualizar">refresh</mat-icon>
+
+</mat-toolbar>
+
+<div *ngIf="!hasLiberacao" class="center">
+  <i class="fa fa-2x fa-search" style="color: darkorange"></i>
+  <span class="semLiberacao">Nenhuma liberação encontrada</span>
+</div>
+
+<div *ngIf="hasLiberacao" class="container-liberacao">
+
+  <div class="row">
+    <div class="col-xl-4 col-lg-6 col-md-12 col-sm-12 div-principal" *ngFor="let liberacao of liberacoes">
+      <mat-card (click)="openLiberacao(liberacao.idLibProc, liberacao.estab)"
+                class="over card-margin-bottom card-padding">
+
+        <div class="row">
+          <div class="col-10">
+            <span class="titulo">Ação Pendente</span>
+          </div>
+
+          <div class="col-2">
+            <span class="titulo">Estab</span>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-10 abbreviate">
+            <span class="descricao">{{liberacao.descricao}}</span>
+          </div>
+
+          <div class="col-2">
+            <span class="descricao">{{liberacao.estab}}</span>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-4">
+            <span class="titulo">Solicitação</span>
+          </div>
+
+          <div class="col-3">
+            <span class="titulo">Doc.</span>
+          </div>
+
+          <div class="col-5">
+            <span class="titulo">Usuário Req.</span>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-4">
+            <span class="descricao">{{liberacao.idLibProc}}</span>
+          </div>
+
+          <div class="col-3">
+            <span class="descricao">{{liberacao.idDocto}}</span>
+          </div>
+
+          <div class="col-5 abbreviate">
+            <span class="descricao">{{liberacao.userIdReq}}</span>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-6">
+            <span class="titulo">Cliente</span>
+          </div>
+
+          <div class="col-6">
+            <span class="titulo">Horário</span>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-6 abbreviate">
+            <span class="descricao">{{liberacao.pessoa}}</span>
+          </div>
+
+          <div class="col-6 abbreviate">
+            <span class="descricao">{{liberacao.dataHrSolic | date: 'dd/MM/yyyy HH:mm:ss'}}</span>
+          </div>
+        </div>
+
+      </mat-card>
+    </div>
+  </div>
+
+</div>
+
+<p-sidebar [(visible)]="visible"
+           position="right"
+           [baseZIndex]="10000"
+           [showCloseIcon]="false"
+           [style]="{width:'270px'}">
+
+  <div class="row borda-inferior">
+    <div class="col-12">
+      <h2>Filtros</h2>
+    </div>
+  </div>
+
+  <div class="row" style="margin-top: 18px">
+
+    <div class="col-12">
+      <div class="form-group">
+        <label for="estab">Estabelecimento</label>
+        <select id="estab"
+                name="estab"
+                (change)="setEstabFilter(liberacao.estabSelected)"
+                [(ngModel)]="liberacao.estabSelected"
+                class="form-control">
+          <option *ngFor="let filial of usersFilial"
+                  value="{{filial.estab}}">
+            {{filial.estab}} | {{filial.razaoSoc}}
+          </option>
+        </select>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-6">
+      <button label="Limpar"
+              pButton
+              type="button"
+              icon="pi pi-times"
+              class="ui-button-secondary"
+              (click)="cleanFilter()"
+              style="width: 100%">
+      </button>
+    </div>
+
+    <div class="col-6">
+      <button label="Filtrar"
+              pButton
+              type="button"
+              icon="pi pi-check"
+              (click)="filtrar()"
+              style="width: 100%">
+      </button>
+    </div>
+  </div>
+
+</p-sidebar>

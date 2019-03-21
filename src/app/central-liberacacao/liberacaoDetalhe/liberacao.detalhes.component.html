@@ -1,0 +1,110 @@
+<app-toolbar></app-toolbar>
+<mat-toolbar color="primary" style="margin-top: 60px">
+  <button class="btn-icon" (click)="back()" title="Voltar">
+    <i class="fa fa-2x fa-arrow-left white-text"></i>
+  </button>
+  <span>Nº: {{liberacaoDet.idLibProc}}</span>
+  <span class="spacer"></span>
+  <button mat-button color="primary" class="white-text" title="Negar" (click)="openMotivo(false)">
+    <i class="fa fa-2x fa-ban"></i>
+    Negar
+  </button>
+
+  <button mat-button color="primary" class="white-text" title="Liberar" (click)="openMotivo(true)">
+    <i class="fa fa-2x fa-check"></i>
+    Liberar
+  </button>
+</mat-toolbar>
+
+<div class="container-liberacao">
+
+  <mat-card class="card-margin-bottom">
+
+    <div class="row">
+      <div class="col-12 text-center">
+        <span class="titulo">Descrição</span>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-12 text-center">
+        <span class="descricao">{{liberacaoDet.descricao}}</span>
+      </div>
+    </div>
+
+    <div class="row borda-superior">
+      <div class="col-6 text-center">
+        <span class="titulo">Código</span>
+      </div>
+
+      <div class="col-6 text-center">
+        <span class="titulo">Situação</span>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-6 text-center">
+        <span class="descricao">{{liberacaoDet.idLibProc}}</span>
+      </div>
+
+      <div class="col-6 text-center">
+        <span class="descricao">Pendente</span>
+      </div>
+    </div>
+
+    <div class="row borda-superior">
+      <div class="col-6 text-center">
+        <span class="titulo">Usuário Req.</span>
+      </div>
+
+      <div class="col-6 text-center">
+        <span class="titulo">Horário Sol.</span>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-6 text-center">
+        <span class="descricao">{{liberacaoDet.userIdReq}}</span>
+      </div>
+
+      <div class="col-6 text-center">
+        <span class="descricao">{{liberacaoDet.dataHrSolic | date: 'dd/MM/yyyy HH:mm:ss'}}</span>
+      </div>
+    </div>
+
+    <div class="row borda-superior">
+      <div class="col-6 text-center">
+        <span class="titulo">Documento</span>
+      </div>
+
+      <div class="col-6 text-center">
+        <span class="titulo">Origem</span>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-6 text-center">
+        <span class="descricao">{{liberacaoDet.idDocto}}</span>
+      </div>
+
+      <div class="col-6 text-center">
+        <span class="descricao">Carrinho</span>
+      </div>
+    </div>
+
+    <div class="row borda-superior">
+      <div class="col-12">
+        <button pButton
+                class="btn-detalhes"
+                label="DETALHES DA SOLICITAÇÃO"
+                (click)="openDetalhes()">
+        </button>
+      </div>
+    </div>
+
+    <div *ngIf="showDetalhes" class="row borda-superior" style="margin-top: 10px">
+      <div [innerHTML]="liberacaoDet.solicitacao" class="col-12 template"></div>
+    </div>
+
+  </mat-card>
+</div>
