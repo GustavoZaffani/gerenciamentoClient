@@ -4,7 +4,7 @@ import {CalendarioComponent} from './calendario.component';
 import {FullCalendarModule} from 'primeng/fullcalendar';
 import {ToolbarrModule} from '../toolbar/toolbarr.module';
 import {ContaService} from '../conta/conta.service';
-import {TabViewModule} from 'primeng/primeng';
+import {ChartModule,  TabViewModule} from 'primeng/primeng';
 import {CalendarioService} from './calendario.service';
 
 @NgModule({
@@ -13,7 +13,8 @@ import {CalendarioService} from './calendario.service';
     CommonModule,
     FullCalendarModule,
     ToolbarrModule,
-    TabViewModule
+    TabViewModule,
+    ChartModule
   ],
   declarations: [
     CalendarioComponent
