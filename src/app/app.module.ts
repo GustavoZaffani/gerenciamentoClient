@@ -14,6 +14,12 @@ import {ContaModule} from './conta/conta.module';
 import {GrowlModule} from 'primeng/growl';
 import {MessageService} from 'primeng/api';
 import {ExtratoModule} from './extrato/extrato.module';
+import {CredenciadoraModule} from './credenciadora/credenciadora.module';
+import {LoginModule} from './login/login.module';
+import {LoginService} from './login/login.service';
+import {HTTP_INTERCEPTORS} from '@angular/common/http';
+import {HttpClientInterceptor} from './http-client.interceptor';
+import {UsuarioModule} from './usuario/usuario.module';
 
 
 @NgModule({
@@ -32,10 +38,19 @@ import {ExtratoModule} from './extrato/extrato.module';
     CartaoModule,
     ContaModule,
     GrowlModule,
-    ExtratoModule
+    ExtratoModule,
+    CredenciadoraModule,
+    LoginModule,
+    UsuarioModule
   ],
   providers: [
-    MessageService
+    MessageService,
+    LoginService,
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: HttpClientInterceptor,
+      multi: true
+    }
   ],
   bootstrap: [AppComponent]
 })

@@ -23,6 +23,7 @@
               "src/assets"
             ],
             "styles": [
+              "src/custom-theme.scss",
               "src/styles.css",
               "node_modules/primeicons/primeicons.css",
               "node_modules/primeng/resources/themes/nova-light/theme.css",
@@ -143,5 +144,5 @@
       }
     }
   },
-  "defaultProject": "gerenciamentoClient",
+  "defaultProject": "gerenciamentoClient"
 }

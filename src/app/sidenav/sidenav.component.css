@@ -23,6 +23,7 @@
 
 .mouseOver:hover {
   background-color: #dededee0;
+  cursor: pointer;
 }
 
 .menu-principal {

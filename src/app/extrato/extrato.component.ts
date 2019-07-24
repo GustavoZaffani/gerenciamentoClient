@@ -50,7 +50,10 @@ export class ExtratoComponent implements OnInit {
     this.contaService.findContasByFiltro(this.extrato.cartao, this.extrato.data)
       .subscribe( e => {
         this.conta = e;
+        console.log('trouxe as contas de acordo com o filtro');
         console.log(this.conta);
       });
   }
+
+
 }

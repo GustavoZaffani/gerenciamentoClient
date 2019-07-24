@@ -1,0 +1,42 @@
+<div class="container" style="height: 100%">
+
+  <div class="d-flex justify-content-center">
+    <mat-card style="width: 50%; border-radius: 10px">
+
+      <mat-card-header>
+        <mat-card-title>Login</mat-card-title>
+      </mat-card-header>
+
+      <mat-card-content>
+        <form #form="ngForm" (submit)="login()" class="form-group">
+
+          <div class="form-group">
+            <label for="username">Usuário</label>
+            <input name="username"
+                   id="username"
+                   pInputText
+                   class="form-control"
+                   [(ngModel)]="usuario.usuario"
+                   type="text">
+          </div>
+
+          <div class="form-group">
+            <label for="password">Senha</label>
+            <input name="password"
+                   id="password"
+                   class="form-control"
+                   type="password"
+                   [(ngModel)]="usuario.senha"
+                   pInputText>
+          </div>
+
+          <div class="d-flex justify-content-center">
+            <button pButton type="submit" label="Entrar" icon="pi pi-check"></button>
+          </div>
+
+        </form>
+      </mat-card-content>
+    </mat-card>
+  </div>
+
+</div>

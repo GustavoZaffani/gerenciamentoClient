@@ -4,6 +4,7 @@ import {ToolbarComponent} from './toolbar.component';
 import {ButtonModule, ToolbarModule} from 'primeng/primeng';
 import {FormsModule} from '@angular/forms';
 import {SidenavModule} from '../sidenav/sidenav.module';
+import {LoginService} from '../login/login.service';
 
 @NgModule({
   imports: [
@@ -18,6 +19,9 @@ import {SidenavModule} from '../sidenav/sidenav.module';
   ],
   exports: [
     ToolbarComponent
+  ],
+  providers: [
+    LoginService
   ]
 })
 

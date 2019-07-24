@@ -1,0 +1,71 @@
+<app-toolbar></app-toolbar>
+<br>
+<div class="container">
+
+  <p-card [style]="{width: auto, height: auto}" styleClass="ui-card-shadow">
+    <p-header>
+      <div class="col-12">
+        Credenciadora Form
+      </div>
+    </p-header>
+
+    <form #form="ngForm">
+
+      <div class="row">
+        <div class="col-md-3">
+          <div class="form-group">
+            <label for="codigo">Código</label>
+            <input type="text"
+                   id="codigo"
+                   name="codigo"
+                   [(ngModel)]="credenciadora.id"
+                   class="form-control">
+          </div>
+        </div>
+
+        <div class="col-md-4">
+          <div class="form-group">
+            <label for="credenciadora">Credenciadora</label>
+            <input type="text"
+                   id="credenciadora"
+                   name="credenciadora"
+                   [(ngModel)]="credenciadora.credenciadora"
+                   class="form-control">
+          </div>
+        </div>
+
+        <div class="col-md-4">
+          <div class="form-group">
+            <label for="cnpj">CNPJ</label>
+            <input type="text"
+                   id="cnpj"
+                   name="cnpj"
+                   [(ngModel)]="credenciadora.cnpj"
+                   class="form-control">
+          </div>
+        </div>
+      </div>
+    </form>
+
+    <p-footer>
+      <button type="button"
+              pButton
+              label="Salvar"
+              icon="pi pi-check"
+              (click)="save()">
+      </button>
+
+      <button type="button"
+              pButton
+              label="Voltar"
+              icon="pi pi-times"
+              class="ui-button-secondary"
+              (click)="back()">
+      </button>
+    </p-footer>
+
+  </p-card>
+
+</div>
+
+
