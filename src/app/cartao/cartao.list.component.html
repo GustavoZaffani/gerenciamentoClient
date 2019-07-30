@@ -39,8 +39,8 @@
         <tr [pSelectableRow]="rowData">
           <td>{{rowData.id}}</td>
           <td>{{rowData.descricao}}</td>
-          <td>{{rowData.credenciadora}}</td>
-          <td>{{rowData.bandeira}}</td>
+          <td>{{rowData.credenciadora.credenciadora}}</td>
+          <td>{{rowData.bandeira.descricao}}</td>
           <td>{{rowData.vencimento}}</td>
           <td>
             <button pTooltip="Editar"

@@ -10,7 +10,7 @@ export class UsuarioService {
   url: string;
 
   constructor(private http: HttpClient) {
-    this.url = environment.api_url + 'usuarios/';
+    this.url = environment.api_url + 'usuarios';
   }
 
   findOne(id: number): Observable<Usuario> {

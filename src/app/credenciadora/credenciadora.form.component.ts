@@ -3,6 +3,7 @@ import {NgForm} from '@angular/forms';
 import {CredenciadoraService} from './credenciadora.service';
 import {Credenciadora} from './credenciadora';
 import {MessageService} from 'primeng/api';
+import {ActivatedRoute, Router} from '@angular/router';
 
 @Component({
   selector: 'app-form-credenciadora',
@@ -15,10 +16,21 @@ export class CredenciadoraFormComponent implements OnInit {
   credenciadora: Credenciadora;
 
   constructor(private credenciadoraService: CredenciadoraService,
-              private messageService: MessageService) { }
+              private messageService: MessageService,
+              private route: ActivatedRoute) { }
 
   ngOnInit() {
     this.credenciadora = new Credenciadora();
+
+    this.route.params
+      .subscribe(params => {
+        if (params['id']) {
+          this.credenciadoraService.findOne(params['id'])
+            .subscribe(e => {
+              this.credenciadora = e;
+            });
+        }
+      });
   }
 
   save() {
@@ -30,6 +42,6 @@ export class CredenciadoraFormComponent implements OnInit {
   }
 
   back() {
-    console.log('vai voltar esse krl');
+    window.history.back();
   }
 }

@@ -7,7 +7,7 @@ import {ButtonModule} from 'primeng/button';
 import {CardModule} from 'primeng/card';
 import {CartaoListComponent} from './cartao.list.component';
 import {TableModule} from 'primeng/table';
-import {CalendarModule} from 'primeng/primeng';
+import {AutoCompleteModule, CalendarModule} from 'primeng/primeng';
 import {CartaoService} from './cartao.service';
 import {HttpClientModule} from '@angular/common/http';
 
@@ -21,7 +21,8 @@ import {HttpClientModule} from '@angular/common/http';
     CardModule,
     TableModule,
     CalendarModule,
-    HttpClientModule
+    HttpClientModule,
+    AutoCompleteModule
   ],
 
   declarations: [

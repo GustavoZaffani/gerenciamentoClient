@@ -3,6 +3,11 @@ import {Cartao} from './cartao';
 import {NgForm} from '@angular/forms';
 import {CartaoService} from './cartao.service';
 import {ActivatedRoute} from '@angular/router';
+import {Credenciadora} from '../credenciadora/credenciadora';
+import {CredenciadoraService} from '../credenciadora/credenciadora.service';
+import {BandeiraService} from '../bandeira/bandeira.service';
+import {Bandeira} from '../bandeira/bandeira';
+import {MessageService} from 'primeng/api';
 
 @Component({
   selector: 'app-cartao',
@@ -17,10 +22,15 @@ export class CartaoFormComponent implements OnInit {
   enabledObrigaVencimento = false;
   disabledMelhorData = true;
   disabledVencimento = true;
+  credenciadoraList: Credenciadora[];
+  bandeirasList: Bandeira[];
 
   @ViewChild('form') form: NgForm;
 
   constructor(private cartaoService: CartaoService,
+              private messageService: MessageService,
+              private credenciadoraService: CredenciadoraService,
+              private bandeiraService: BandeiraService,
               private route: ActivatedRoute) {
   }
 
@@ -43,9 +53,11 @@ export class CartaoFormComponent implements OnInit {
     this.cartaoService.save(this.cartao)
       .subscribe(e => {
         this.cartao = e;
+        this.messageService.add({severity: 'success', summary: 'Registro salvo com sucesso!'});
       });
-
-    this.back();
+    setTimeout(() => {
+      this.back();
+    }, 1500);
   }
 
   back() {
@@ -66,6 +78,23 @@ export class CartaoFormComponent implements OnInit {
       this.enabledObrigaMelhorData = false;
       this.enabledObrigaVencimento = false;
     }
+  }
 
+  findCredenciadoras($event: any) {
+    this.credenciadoraService.complete($event.query)
+      .subscribe(e => {
+        this.credenciadoraList = e;
+      });
+  }
+
+  credenciadoraSelected() {
+    this.cartao.cnpj = this.cartao.credenciadora.cnpj;
+  }
+
+  findBandeiras($event: any) {
+    this.bandeiraService.complete($event.query)
+      .subscribe(e => {
+        this.bandeirasList = e;
+      });
   }
 }

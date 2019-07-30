@@ -1,18 +1,17 @@
 <app-toolbar></app-toolbar>
 <br>
 <div class="container">
-
-  <p-card styleClass="ui-card-shadow">
+  <p-card>
     <div class="col-12">
-      <span>Usuários List</span>
+      <span>Credenciadora List</span>
       <button type="button"
               class="btn btn-link"
-              (click)="newUser()">
+              (click)="newBandeira()">
         <i class="fa fa-2x fa-plus-circle"></i>
       </button>
     </div>
 
-    <p-table #dt [value]="usuarios" [paginator]="true" [rows]="10" [columns]="cols">
+    <p-table #dt [value]="bandeiras" [paginator]="true" [rows]="10" [columns]="cols">
 
       <ng-template pTemplate="caption">
         <div>
@@ -36,8 +35,7 @@
       <ng-template pTemplate="body" let-rowData let-columns="columns">
         <tr [pSelectableRow]="rowData">
           <td>{{rowData.id}}</td>
-          <td>{{rowData.nome}}</td>
-          <td>{{rowData.usuario}}</td>
+          <td>{{rowData.descricao}}</td>
           <td>
             <button pTooltip="Editar"
                     type="button"
@@ -59,6 +57,7 @@
       </ng-template>
 
     </p-table>
-
   </p-card>
+
+
 </div>

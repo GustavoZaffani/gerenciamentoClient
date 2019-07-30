@@ -12,7 +12,7 @@ import {ConfiguracaoModule} from './configuracao/configuracao.module';
 import {CartaoModule} from './cartao/cartao.module';
 import {ContaModule} from './conta/conta.module';
 import {GrowlModule} from 'primeng/growl';
-import {MessageService} from 'primeng/api';
+import {ConfirmationService, MessageService} from 'primeng/api';
 import {ExtratoModule} from './extrato/extrato.module';
 import {CredenciadoraModule} from './credenciadora/credenciadora.module';
 import {LoginModule} from './login/login.module';
@@ -20,6 +20,8 @@ import {LoginService} from './login/login.service';
 import {HTTP_INTERCEPTORS} from '@angular/common/http';
 import {HttpClientInterceptor} from './http-client.interceptor';
 import {UsuarioModule} from './usuario/usuario.module';
+import {ConfirmDialogModule} from 'primeng/primeng';
+import {BandeiraModule} from './bandeira/bandeira.module';
 
 
 @NgModule({
@@ -41,10 +43,13 @@ import {UsuarioModule} from './usuario/usuario.module';
     ExtratoModule,
     CredenciadoraModule,
     LoginModule,
-    UsuarioModule
+    UsuarioModule,
+    ConfirmDialogModule,
+    BandeiraModule
   ],
   providers: [
     MessageService,
+    ConfirmationService,
     LoginService,
     {
       provide: HTTP_INTERCEPTORS,

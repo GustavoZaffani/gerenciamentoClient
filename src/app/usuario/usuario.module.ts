@@ -7,6 +7,7 @@ import {ToolbarrModule} from '../toolbar/toolbarr.module';
 import {CardModule} from 'primeng/card';
 import {FormsModule} from '@angular/forms';
 import {ButtonModule} from 'primeng/button';
+import {TableModule} from 'primeng/table';
 
 @NgModule({
   imports: [
@@ -14,7 +15,8 @@ import {ButtonModule} from 'primeng/button';
     ToolbarrModule,
     CardModule,
     FormsModule,
-    ButtonModule
+    ButtonModule,
+    TableModule
   ],
 
   declarations: [

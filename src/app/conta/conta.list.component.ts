@@ -24,6 +24,7 @@ export class ContaListComponent implements OnInit {
     this.cols = [
       {path: 'id', header: 'Código'},
       {path: 'descricao', header: 'Descrição'},
+      {path: 'valor', header: 'Valor'},
       {path: 'dtConta', header: 'Data Conta'},
       {path: 'vencimento', header: 'Vencimento'},
     ];

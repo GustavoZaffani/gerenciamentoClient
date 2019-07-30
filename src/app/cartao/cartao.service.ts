@@ -4,7 +4,6 @@ import {environment} from '../../environments/environment';
 import {Observable} from 'rxjs';
 import {Cartao} from './cartao';
 
-
 @Injectable()
 export class CartaoService {
 

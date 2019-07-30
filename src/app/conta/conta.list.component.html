@@ -38,12 +38,13 @@
 
       <ng-template pTemplate="body" let-rowData let-columns="columns">
         <tr class="conta-atrasada" [pSelectableRow]="rowData">
-          <td *ngIf="rowData.tipoPagamento == 'D'"><i class="col-1 fa fa-money-bill-alt"></i></td>
+          <td *ngIf="rowData.tipoPagamento == 'D'"><i class="col-1 fa fa-money-bill-alt d-flex justify-content-center"></i></td>
           <!--Verificar icone para colocar no boleto-->
-          <td *ngIf="rowData.tipoPagamento == 'B'"><i class="col-1 fa fa-cogs"></i></td>
-          <td *ngIf="rowData.tipoPagamento == 'C'"><i class="col-1 fa fa-credit-card"></i></td>
+          <td *ngIf="rowData.tipoPagamento == 'B'"><i class="col-1 fa fa-cogs d-flex justify-content-center"></i></td>
+          <td *ngIf="rowData.tipoPagamento == 'C'"><i class="col-1 fa fa-credit-card d-flex justify-content-center"></i></td>
           <td>{{rowData.id}}</td>
           <td>{{rowData.descricao}}</td>
+          <td>{{rowData.valor | currencyFormat}}</td>
           <td>{{rowData.dtConta}}</td>
           <td>{{rowData.vencimento}}</td>
           <td>

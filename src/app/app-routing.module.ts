@@ -13,6 +13,9 @@ import {CredenciadoraFormComponent} from './credenciadora/credenciadora.form.com
 import {LoginComponent} from './login/login.component';
 import {LoginService} from './login/login.service';
 import {UsuarioFormComponent} from './usuario/usuario.form.component';
+import {UsuarioListComponent} from './usuario/usuario.list.component';
+import {BandeiraFormComponent} from './bandeira/bandeira.form.component';
+import {BandeiraListComponent} from './bandeira/bandeira.list.component';
 
 const routes: Routes = [
   {path: 'login', component: LoginComponent},
@@ -28,7 +31,13 @@ const routes: Routes = [
   {path: 'extrato', canActivate: [LoginService], component: ExtratoComponent},
   {path: 'credenciadora', canActivate: [LoginService], component: CredenciadoraListComponent},
   {path: 'credenciadora/form', canActivate: [LoginService], component: CredenciadoraFormComponent},
-  {path: 'usuario/form', canActivate: [LoginService], component: UsuarioFormComponent}
+  {path: 'credenciadora/form/:id', canActivate: [LoginService], component: CredenciadoraFormComponent},
+  {path: 'usuario', canActivate: [LoginService], component: UsuarioListComponent},
+  {path: 'usuario/form', canActivate: [LoginService], component: UsuarioFormComponent},
+  {path: 'usuario/form/:id', canActivate: [LoginService], component: UsuarioFormComponent},
+  {path: 'bandeira', canActivate: [LoginService], component: BandeiraListComponent},
+  {path: 'bandeira/form', canActivate: [LoginService], component: BandeiraFormComponent},
+  {path: 'bandeira/form/:id', canActivate: [LoginService], component: BandeiraFormComponent}
 ];
 
 @NgModule({

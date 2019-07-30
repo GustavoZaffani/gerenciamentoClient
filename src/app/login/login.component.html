@@ -10,14 +10,18 @@
       <mat-card-content>
         <form #form="ngForm" (submit)="login()" class="form-group">
 
-          <div class="form-group">
-            <label for="username">Usuário</label>
-            <input name="username"
-                   id="username"
-                   pInputText
-                   class="form-control"
-                   [(ngModel)]="usuario.usuario"
-                   type="text">
+          <div class="row">
+            <div class="col-md-12">
+              <div class="form-group">
+                <label for="username">Usuário</label>
+                <input name="username"
+                       id="username"
+                       pInputText
+                       class="form-control"
+                       [(ngModel)]="usuario.usuario"
+                       type="text">
+              </div>
+            </div>
           </div>
 
           <div class="form-group">
@@ -31,7 +35,7 @@
           </div>
 
           <div class="d-flex justify-content-center">
-            <button pButton type="submit" label="Entrar" icon="pi pi-check"></button>
+            <button class="w-100" pButton type="submit" label="Entrar" style="border-radius: 50px"></button>
           </div>
 
         </form>

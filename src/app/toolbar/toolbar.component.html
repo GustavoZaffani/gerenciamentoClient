@@ -1,5 +1,14 @@
 <nav class="navbar navbar-expand-lg">
   <app-sidenav></app-sidenav>
   <a class="navbar-brand" href="#">Gerenciamento Financeiro</a>
-  <i class="fa fa-circle" (click)="logout()">Sair</i>
+  <div>
+    <span id="user-logado" class="text-white"></span>
+  </div>
+  <div>
+    <a href="#!">
+      <i class="fa fa-sign-out-alt text-white" (click)="logout()"></i>
+      Sair
+    </a>
+  </div>
+
 </nav>

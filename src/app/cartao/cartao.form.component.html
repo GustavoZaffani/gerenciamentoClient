@@ -12,8 +12,7 @@
     <form #form="ngForm">
 
       <div class="row">
-
-        <div class="col-3">
+        <div class="col-md-3">
           <div class="form-group">
             <label for="id">Código</label>
             <input name="id"
@@ -25,7 +24,7 @@
           </div>
         </div>
 
-        <div class="col-9">
+        <div class="col-md-9">
           <div class="form-group">
             <label for="descricao">Descrição</label>
             <span class="campo-obrigatorio">*</span>
@@ -43,11 +42,18 @@
         <div class="col-6">
           <div class="form-group">
             <label for="credenciadora">Credenciadora</label>
-            <input name="credenciadora"
-                   id="credenciadora"
-                   type="text"
-                   [(ngModel)]="cartao.credenciadora"
-                   class="form-control">
+            <p-autoComplete inputId="credenciadora"
+                            name="credenciadora"
+                            [dropdown]="true"
+                            appendTo="body"
+                            field="credenciadora"
+                            [(ngModel)]="cartao.credenciadora"
+                            (onSelect)="credenciadoraSelected()"
+                            (completeMethod)="findCredenciadoras($event)"
+                            [suggestions]="credenciadoraList"
+                            (onClear)="cartao.credenciadora = null"
+                            [forceSelection]="true">
+            </p-autoComplete>
           </div>
         </div>
 
@@ -57,6 +63,7 @@
             <input name="cnpjCred"
                    id="cnpjCred"
                    type="text"
+                   disabled
                    [(ngModel)]="cartao.cnpj"
                    class="form-control">
           </div>
@@ -120,11 +127,22 @@
         <div class="col-3">
           <div class="form-group">
             <label for="bandeira">Bandeira</label>
-            <input name="bandeira"
-                   id="bandeira"
-                   class="form-control"
-                   [(ngModel)]="cartao.bandeira"
-                   type="text">
+            <p-autoComplete inputId="bandeira"
+                            name="bandeira"
+                            [dropdown]="true"
+                            appendTo="body"
+                            field="descricao"
+                            [(ngModel)]="cartao.bandeira"
+                            (completeMethod)="findBandeiras($event)"
+                            [suggestions]="bandeirasList"
+                            (onClear)="cartao.bandeira = null"
+                            [forceSelection]="true">
+            </p-autoComplete>
+<!--            <input name="bandeira"-->
+<!--                   id="bandeira"-->
+<!--                   class="form-control"-->
+<!--                   [(ngModel)]="cartao.bandeira"-->
+<!--                   type="text">-->
           </div>
         </div>
 

@@ -4,7 +4,7 @@ import {Cartao} from '../cartao/cartao';
 import {Conta} from './conta';
 import {NgForm} from '@angular/forms';
 import {ContaService} from './conta.service';
-import {MessageService} from 'primeng/api';
+import {ConfirmationService, MessageService} from 'primeng/api';
 import {ActivatedRoute} from '@angular/router';
 import * as moment from 'moment';
 
@@ -25,6 +25,7 @@ export class ContaFormComponent implements OnInit {
 
   constructor(private cartaoService: CartaoService,
               private contaService: ContaService,
+              private confirmationService: ConfirmationService,
               private messageService: MessageService,
               private route: ActivatedRoute) {
   }
@@ -81,20 +82,28 @@ export class ContaFormComponent implements OnInit {
   validaValor() {
     if (this.conta.cartao) {
       if (this.conta.valor > this.conta.cartao.limite) {
-        this.messageService.add({severity: 'warn', summary: 'Valor maior que limite do cartão!'});
-        this.conta.valor = null;
+        this.confirmationService.confirm({
+          message: 'O valor da conta é maior que o limite atual do cartão! Deseja continuar?',
+          acceptLabel: 'Sim',
+          rejectLabel: 'Não',
+          header: 'Atenção',
+          reject: () => {
+            this.conta.valor = null;
+          }
+        });
+        // this.messageService.add({severity: 'warn', summary: 'Valor maior que limite do cartão!'});
       }
     }
   }
 
-  // TODO necessário implementar uma funcao que subtraia a data corretamente
   cartaoSelected() {
-
     if (this.conta.cartao.tipo === 'C') {
       const vencimento = new Date();
       vencimento.setDate(this.conta.cartao.vencimento);
 
       if (new Date().getDate() >= this.conta.cartao.melhorData) {
+        vencimento.setMonth(vencimento.getMonth() + 2);
+      } else {
         vencimento.setMonth(vencimento.getMonth() + 1);
       }
       this.conta.vencimento = moment(vencimento).format('DD/MM/YYYY');
@@ -106,11 +115,10 @@ export class ContaFormComponent implements OnInit {
 
   save() {
     console.log(this.conta);
-    this.formataData();
     this.contaService.save(this.conta)
       .subscribe(e => {
         this.conta = e;
-        this.messageService.add({severity: 'success', summary: 'Salvo com sucesso'});
+        this.messageService.add({severity: 'success', summary: 'Registro salvo com sucesso'});
         setTimeout(() => {
           this.back();
         }, 1500);
@@ -120,14 +128,4 @@ export class ContaFormComponent implements OnInit {
   back() {
     window.history.back();
   }
-
-  // TODO será utilizada até descobrir o motivo de estar dando erro na data
-  formataData() {
-    this.conta.vencimento = moment(this.conta.vencimento).format('DD/MM/YYYY');
-    this.conta.dtConta = moment(this.conta.vencimento).format('DD/MM/YYYY');
-    console.log('data conta', this.conta.dtConta);
-    console.log('data vencimento', this.conta.vencimento);
-  }
-
-
 }

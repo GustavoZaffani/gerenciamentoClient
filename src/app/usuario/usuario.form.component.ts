@@ -3,6 +3,7 @@ import {NgForm} from '@angular/forms';
 import {Usuario} from './usuario';
 import {UsuarioService} from './usuario.service';
 import {MessageService} from 'primeng/api';
+import {ActivatedRoute} from '@angular/router';
 
 @Component({
   selector: 'app-form-usuario',
@@ -15,10 +16,21 @@ export class UsuarioFormComponent implements OnInit {
   usuario: Usuario;
 
   constructor(private usuarioService: UsuarioService,
-              private messageService: MessageService) { }
+              private messageService: MessageService,
+              private route: ActivatedRoute) { }
 
   ngOnInit() {
     this.usuario = new Usuario();
+
+    this.route.params
+      .subscribe(params => {
+        if (params['id']) {
+          this.usuarioService.findOne(params['id'])
+            .subscribe(e => {
+              this.usuario = e;
+            });
+        }
+      });
   }
 
   save() {
@@ -33,6 +45,6 @@ export class UsuarioFormComponent implements OnInit {
   }
 
   back() {
-    console.log('vai voltar');
+    window.history.back();
   }
 }

@@ -40,10 +40,8 @@
   <div class="row mouseOver">
     <div class="ui-grid-col-12">
       <li class="white-text">
-        <i class="col-1 fa fa-2x fa-cogs"></i>
-<!--        <a class="col-11" routerLink="/configuracoes" routerLinkActive="active-link"-->
-<!--           href="configuracoes">Configurações</a>-->
-        <a class="col-11" (click)="openMenu2()">Configurações</a>
+        <i class="col-1 fa fa-2x fa-sticky-note"></i>
+        <a class="col-11" (click)="openMenu2()">Relatórios</a>
       </li>
     </div>
   </div>
@@ -51,10 +49,17 @@
   <div class="row mouseOver">
     <div class="ui-grid-col-12">
       <li class="white-text">
-        <i class="col-1 fa fa-2x fa-dot-circle-o">
-          <a class="col-11" routerLink="/credenciadora" routerLinkActive="active-link"
-             href="credenciadora">Credenciadora</a>
-        </i>
+        <i class="col-1 fa fa-2x fa-building"></i>
+        <a class="col-11" routerLink="/credenciadora" routerLinkActive="active-link" href="credenciadora">Credenciadora</a>
+      </li>
+    </div>
+  </div>
+
+  <div class="row mouseOver">
+    <div class="ui-grid-col-12">
+      <li class="white-text">
+        <i class="col-1 fa fa-2x fa-flag"></i>
+        <a class="col-11" routerLink="/bandeira" routerLinkActive="active-link" href="bandeira">Bandeira</a>
       </li>
     </div>
   </div>
@@ -63,7 +68,7 @@
     <div class="ui-grid-col-12">
       <li class="white-text">
         <i class="col-1 fa fa-2x fa-user"></i>
-        <a class="col-11" routerLink="/usuario/form" routerLinkActive="active-link" href="/usuario/form">Usuários</a>
+        <a class="col-11" routerLink="/usuario" routerLinkActive="active-link" href="/usuario">Usuários</a>
       </li>
     </div>
   </div>
@@ -71,6 +76,15 @@
 </p-sidebar>
 
 <p-sidebar [(visible)]="display1" [baseZIndex]="1000" [showCloseIcon]="false">
+
+  <div class="row mouseOver" (click)="returnMenu1()">
+    <div class="ui-grid-col-12">
+      <li class="white-text">
+        <i class="col-1 fa fa-2x fa-arrow-left"></i>
+        <a class="col-11">Voltar</a>
+      </li>
+    </div>
+  </div>
 
   <div class="row mouseOver">
     <div class="ui-grid-col-12">

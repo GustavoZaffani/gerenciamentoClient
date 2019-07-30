@@ -7,6 +7,8 @@ import {CardModule} from 'primeng/card';
 import {FormsModule} from '@angular/forms';
 import {ButtonModule} from 'primeng/button';
 import {CredenciadoraService} from './credenciadora.service';
+import {TableModule} from 'primeng/table';
+import {CpfCnpjPipeModule} from '../pipe/cpfCnpj/cpfCnpj.pipe.module';
 
 @NgModule({
 
@@ -15,7 +17,9 @@ import {CredenciadoraService} from './credenciadora.service';
     ToolbarrModule,
     CardModule,
     FormsModule,
-    ButtonModule
+    ButtonModule,
+    TableModule,
+    CpfCnpjPipeModule
   ],
   declarations: [
     CredenciadoraListComponent,

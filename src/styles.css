@@ -8,6 +8,12 @@ body {
   background-color: rgba(96, 96, 96, 0.17) !important;
 }
 
+
+.ui-card-shadow {
+  border-radius: 15px !important;
+}
+
+
 .menu-card {
   border-bottom: #cac5c5 1px solid;
   font-size: 1.7rem;

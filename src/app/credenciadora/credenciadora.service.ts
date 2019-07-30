@@ -28,4 +28,9 @@ export class CredenciadoraService {
   delete(id: number): Observable<void> {
     return this.http.delete<void>(this.url + '/' + id);
   }
+
+  complete(query: string): Observable<Credenciadora[]> {
+    const url = this.url + `/complete?query=${query}`;
+    return this.http.get<Credenciadora[]>(url);
+  }
 }

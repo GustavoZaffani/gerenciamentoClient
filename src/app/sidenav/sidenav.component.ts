@@ -20,4 +20,9 @@ export class SidenavComponent implements OnInit {
     this.display = false;
     this.display1 = true;
   }
+
+  returnMenu1() {
+    this.display = true;
+    this.display1 = false;
+  }
 }

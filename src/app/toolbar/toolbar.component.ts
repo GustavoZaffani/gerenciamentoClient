@@ -12,10 +12,15 @@ export class ToolbarComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.setUserLogado();
   }
 
   logout() {
     this.loginService.logout();
   }
 
+  setUserLogado() {
+    const userLogado = localStorage.getItem('username');
+    document.getElementById('user-logado').textContent = userLogado;
+  }
 }

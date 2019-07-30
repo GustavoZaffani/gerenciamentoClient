@@ -1,12 +1,15 @@
+import {Credenciadora} from '../credenciadora/credenciadora';
+import {Bandeira} from '../bandeira/bandeira';
+
 export class Cartao {
 
   id: number;
   descricao: string;
-  credenciadora: string;
-  cnpj: number;
+  credenciadora: Credenciadora;
+  cnpj: string;
   limite: number;
   vencimento: number;
   tipo: string;
-  bandeira: string;
+  bandeira: Bandeira;
   melhorData: number;
 }

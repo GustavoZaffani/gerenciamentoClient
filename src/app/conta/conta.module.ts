@@ -10,6 +10,7 @@ import {CardModule} from 'primeng/card';
 import {AutoCompleteModule, CalendarModule} from 'primeng/primeng';
 import {ContaService} from './conta.service';
 import {CartaoService} from '../cartao/cartao.service';
+import {CurrencyFormatPipeModule} from '../pipe/currencyFormat/currencyFormat.pipe.module';
 
 @NgModule({
 
@@ -21,7 +22,8 @@ import {CartaoService} from '../cartao/cartao.service';
     TableModule,
     CardModule,
     AutoCompleteModule,
-    CalendarModule
+    CalendarModule,
+    CurrencyFormatPipeModule
   ],
 
   declarations: [

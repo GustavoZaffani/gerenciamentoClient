@@ -55,7 +55,7 @@
             <label for="dataConta">Data da Conta</label>
             <p-calendar name="dataConta"
                         id="dataConta"
-                        datatype="string"
+                        dataType="string"
                         dateFormat="dd/mm/yy"
                         (onSelect)="setVencimento()"
                         [(ngModel)]="conta.dtConta"
@@ -69,10 +69,10 @@
             <label for="vencimento">Vencimento</label>
             <p-calendar name="vencimento"
                         id="vencimento"
-                        datatype="string"
-                        dateFormat="dd/mm/yy"
                         [disabled]="vencimentoDisabled"
                         [(ngModel)]="conta.vencimento"
+                        dataType="string"
+                        dateFormat="dd/mm/yy"
                         [style]="{'width':'100%'}"
                         [inputStyle]="{'width':'100%'}">
             </p-calendar>

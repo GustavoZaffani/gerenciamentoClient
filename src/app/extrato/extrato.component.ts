@@ -21,6 +21,14 @@ export class ExtratoComponent implements OnInit {
               private contaService: ContaService) { }
 
   ngOnInit() {
+    this.buildName();
+  }
+
+  buildName() {
+    const username = localStorage.getItem('username');
+    // TODO verificar para deixar a primeira letra sempre maiúscula
+    username.charAt(0).replace(username.charAt(0), username.charAt(0).toUpperCase());
+    document.getElementById('user').textContent = 'Olá, ' + username + '!';
   }
 
   findCartoes($event) {
@@ -54,6 +62,4 @@ export class ExtratoComponent implements OnInit {
         console.log(this.conta);
       });
   }
-
-
 }
