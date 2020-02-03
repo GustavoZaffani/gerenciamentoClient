@@ -2,5 +2,6 @@ import {Cartao} from '../cartao/cartao';
 
 export class Extrato {
   cartao: Cartao;
-  data: string;
+  dataIni: string;
+  dataFim: string;
 }

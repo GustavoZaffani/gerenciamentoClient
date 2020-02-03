@@ -21,6 +21,7 @@ export class ExtratoComponent implements OnInit {
               private contaService: ContaService) { }
 
   ngOnInit() {
+    this.extrato = new Extrato();
     this.buildName();
   }
 
@@ -40,26 +41,35 @@ export class ExtratoComponent implements OnInit {
 
   // TODO método que irá filtrar as contas, de acordo com os filtros
   filtrar() {
-    this.contaService.findAll()
+    console.log('cartao ' + this.extrato.cartao);
+    console.log('data ' + this.extrato.dataIni);
+    console.log('data Fim ' + this.extrato.dataFim);
+
+    this.contaService.findContasByFiltro(this.extrato)
       .subscribe(e => {
         this.conta = e;
         console.log(this.conta);
       });
-
-    this.extrato.data = moment(new Date()).format('DD/MM/YYYY');
-
-    this.cartaoService.findOne(1)
-      .subscribe(e => {
-        this.extrato.cartao = e;
-      });
-
-    console.log(this.extrato.data);
-    console.log(this.extrato.cartao);
-    this.contaService.findContasByFiltro(this.extrato.cartao, this.extrato.data)
-      .subscribe( e => {
-        this.conta = e;
-        console.log('trouxe as contas de acordo com o filtro');
-        console.log(this.conta);
-      });
+    // this.contaService.findAll()
+    //   .subscribe(e => {
+    //     this.conta = e;
+    //     console.log(this.conta);
+    //   });
+    //
+    // this.extrato.data = moment(new Date()).format('DD/MM/YYYY');
+    //
+    // this.cartaoService.findOne(1)
+    //   .subscribe(e => {
+    //     this.extrato.cartao = e;
+    //   });
+    //
+    // console.log(this.extrato.data);
+    // console.log(this.extrato.cartao);
+    // this.contaService.findContasByFiltro(this.extrato.cartao, this.extrato.data)
+    //   .subscribe( e => {
+    //     this.conta = e;
+    //     console.log('trouxe as contas de acordo com o filtro');
+    //     console.log(this.conta);
+    //   });
   }
 }
